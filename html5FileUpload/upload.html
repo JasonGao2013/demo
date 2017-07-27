@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<link href="http://getbootstrap.com/2.3.2/assets/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+<div class="form-group">
+    <div class="col-sm-3">
+          <div class="input-group">
+                <input type="text" class="form-control" name="sdk_path" value="">
+                <div id="upload"><button class="btn btn-primary uploadfilebtn" type="button">点我</button></div>
+          </div>
+    </div>
+</div>
+</body>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+<script src="./h5uploader.js"></script>
+<script type="text/javascript">
+$(function(){
+
+	$('#upload').html5uploader({
+		auto:true,
+		multi:false,
+		url:'http://www.baidu.com',
+		onUploadSuccess:function(file, response){
+			response = $.parseJSON(response);
+			$("input[name='sdk_path']").val(response.path);
+			$("input[name='sdk_md5']").val(response.md5);
+		}
+	})
+})
+</script>
+</html>
